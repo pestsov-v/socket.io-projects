@@ -89,7 +89,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+socket.io-typescript-initial/dist
 
 # Gatsby files
 .cache/

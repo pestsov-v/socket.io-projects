@@ -6,7 +6,7 @@ class Client {
 
         this.socket.on("message", function (message: any) {
          console.log(message)
-            document.body.innerHTML = message
+            document.body.innerHTML = message + "<br/>"
         })
     }
 }

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2019",
     "module": "CommonJS",
-    "outDir": "../../dist/server",
+    "outDir": "../../socket.io-typescript-initial/dist/server",
     "sourceMap": true,
     "esModuleInterop": true
   },

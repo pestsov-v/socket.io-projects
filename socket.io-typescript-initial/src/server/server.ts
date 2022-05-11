@@ -20,6 +20,9 @@ class App {
 
         io.on('connection', function (socket: Socket) {
             console.log('User is connected: ' + socket.id)
+
+            socket.broadcast.emit("message", "Каждому сказать привет " + socket.id)
+
             socket.emit("message", "Hello" + socket.id)
             socket.on('disconnect', function () {
                 console.log('User is disconnected: ' + socket.id)
