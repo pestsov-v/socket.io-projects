@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES3",
-    "module": "CommonJS",
+    "target": "ES5",
+    "module": "ES2015",
+    "moduleResolution": "Node",
+    "lib": [
+      "DOM",
+      "ES5"
+    ],
+    "esModuleInterop": true,
     "outDir": "../../dist/client"
   },
   "include": [

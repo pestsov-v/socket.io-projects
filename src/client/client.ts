@@ -1,10 +1,13 @@
-// import {Socket} from "socket.io";
-//
-// class Client {
-//     private readonly socket: Socket
-//
-//     constructor() {
-//         this.socket = io()
-//     }
-// }
-// const client = new Client()
+class Client {
+    private readonly socket
+
+    constructor() {
+        this.socket = io()
+
+        this.socket.on("message", function (message: any) {
+         console.log(message)
+            document.body.innerHTML = message
+        })
+    }
+}
+const client = new Client()
