@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "concurrently -k \"tsc -p ./src/server -w\" \"nodemon ./dist/server/server.js\""
+    "dev": "concurrently -k \"tsc -p ./src/server -w\" \"tsc -p ./src/client -w\" \"nodemon ./dist/server/server.js\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "socket.io": "^4.5.0"
   },
   "devDependencies": {
+    "@types/socket.io-client": "^3.0.0",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.32",
     "@types/socket.io": "^3.0.2",
