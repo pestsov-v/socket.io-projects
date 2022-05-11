@@ -1,5 +1,7 @@
+import express from 'express'
 import * as http from 'http'
-import { Server } from 'socket.io'
+import { Server, Socket } from 'socket.io'
+import path from "path";
 
 const port: number = 4000
 
@@ -10,9 +12,16 @@ class App {
     constructor(port: number) {
         this.port = port
 
-        this.server = new http.Server()
-        const io: Server = new Server(this.server)
-    }
+        const app = express()
+        app.use(express.static(path.join(__dirname, '../client')))
+
+        this.server = new http.Server(app)
+        const io: Server = new Server(this.server, { serveClient: true })
+
+        io.on('connection', function (socket: Socket) {
+            console.log('User is connected: ' + socket.id)
+        });
+    };
 
     public Start() {
         this.server.listen(this.port)
