@@ -7,5 +7,11 @@ html(lang='en')
         link(rel="stylesheet", href="/styles/styles.css")
         title Catch Mind
     body
-        script(src='/socket.io/socket.io.js')
-        script(src='/index.js')
+        .loginBox
+            form#jsLogin
+                input(placeholder="Укажите Ваш никнейм", type="text")
+        .gameContainer#jsGame
+            h1 Вы вошли в систему
+
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/main.js')

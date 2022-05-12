@@ -2,6 +2,7 @@ import {join} from 'path';
 import express from 'express';
 import socketIo from 'socket.io';
 import morgan from 'morgan'
+import socketController from "./src/socketController";
 
 const PORT = 4001;
 const app = express();
@@ -15,12 +16,4 @@ const handleListening = () => console.log(`Server is running on http://localhost
 const server = app.listen(PORT, handleListening);
 const io = socketIo(server);
 
-io.on('connection', (socket) => {
-    socket.on('newMessage', ({message}) => {
-        socket.broadcast.emit("messageNotification", { message, nickname: socket.nickname || 'Аноним' } )
-    })
-
-    socket.on('setNickname', ({nickname}) => {
-        socket.nickname = nickname;
-    })
-})
+io.on('connection', socket => socketController(socket, io))
