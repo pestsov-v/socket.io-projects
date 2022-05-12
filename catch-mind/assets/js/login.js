@@ -1,3 +1,4 @@
+const {initSockets} = require("./sockets");
 const body = document.querySelector("body");
 const loginForm = document.getElementById("jsLogin");
 
@@ -8,8 +9,9 @@ const LOGGED_IN = "loggedIn";
 const nickname = localStorage.getItem(NICKNAME);
 
 const logIn = (nickname) => {
-    const socket =io('/')
-    socket.emit('setNickname', { nickname })
+    const socket  = io('/')
+    socket.emit(window.events.setNickname, { nickname })
+    initSockets(socket)
 }
 
 if (nickname === null) {
@@ -19,8 +21,6 @@ if (nickname === null) {
     logIn(nickname)
 }
 
-
-
 const handleFormSubmit = e => {
     e.preventDefault();
     const input = loginForm.querySelector("input");
@@ -28,7 +28,7 @@ const handleFormSubmit = e => {
     input.value = "";
     localStorage.setItem(NICKNAME, value);
     body.className = LOGGED_IN;
-    logIn(value)
+    logIn(value);
 };
 
 
