@@ -1,4 +1,6 @@
 const socket = io('/')
+
+
 socket.on('hello', () => {
     console.log('Кто-то сказал привет')
 })
